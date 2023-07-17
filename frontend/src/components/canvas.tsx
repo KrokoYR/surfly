@@ -155,11 +155,11 @@ export const Canvas = () => {
         formData.append('img', file);
     
         // send POST request with form data
-        // void axios.post(`http://localhost:8000/drawing/image?id=${params.id!}`, formData, {
-        //         headers: {
-        //             'Content-Type': 'multipart/form-data'
-        //         }
-        //     }).then(response => console.log(response.data))
+        void axios.post(`http://localhost:8000/drawing/image?id=${params.id!}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(response => console.log(response.data))
     }
 
     const connectHandler = () => {
