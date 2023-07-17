@@ -26,26 +26,24 @@ export const Canvas = () => {
     useEffect(() => {
         if (canvasRef.current) {
             canvasStore.setCanvas(canvasRef.current)
-            // const ctx = canvasRef.current.getContext('2d')
+            const ctx = canvasRef.current.getContext('2d')
 
-            // const getImg = async () => {
-            //     const response: AxiosResponse<string> = await axios.get<string, AxiosResponse<string>>(`http://localhost:8000/drawing/image?id=${params.id!}`, {
-            //         withCredentials: true
-            //     });
-            //     const img = new Image()
-            //     img.src = response.data
-            //     img.onload = () => {
-            //         invariant(canvasRef.current, 'Canvas is not initialized')
-            //         ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
-            //         ctx?.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height)
-            //     }
-            // }
+            const getImg = async () => {
+                const response: AxiosResponse<string> = await axios.get<string, AxiosResponse<string>>(`http://localhost:8000/drawing/image?id=${params.id!}`);
+                const img = new Image()
+                img.src = response.data
+                img.onload = () => {
+                    invariant(canvasRef.current, 'Canvas is not initialized')
+                    ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+                    ctx?.drawImage(img, 0, 0, canvasRef.current.width, canvasRef.current.height)
+                }
+            }
 
-            // try { 
-            //     void getImg()
-            // } catch (e) {
-            //     console.error(e)
-            // }
+            try { 
+                void getImg()
+            } catch (e) {
+                console.error(e)
+            }
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

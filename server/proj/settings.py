@@ -28,6 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # throw error if secret key is not set
 # if not SECRET_KEY:
 #     raise ValueError("DJANGO_SECRET environment variable is not set")
+SECRET_KEY = 'SECRET_KEY'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", False)
@@ -61,15 +63,10 @@ INSTALLED_APPS = [
 CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost',
-    'https://example-us.vercel.app',
-    'https://example.us', 
-    'https://www.example.us', 
-    'https://www.example.us:40001',
-    'https://example.us:40001',
-    'https://0.0.0.0:40001',
 ]
 CORS_ALLOW_HEADERS = [ "accept", "referer", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-sessionid", "x-requested-with"]
 CORS_EXPOSE_HEADERS = ['Set-Cookie']
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
