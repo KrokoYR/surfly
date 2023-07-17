@@ -1,0 +1,13 @@
+# ignore all files
+**
+
+# apps exclusion
+!/surfly/
+!/drawing/
+
+# nginx
+!/nginx/
+
+!/.env.docker
+!/requirements.txt
+!/docker-entrypoint.sh
